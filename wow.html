@@ -1,5 +1,7 @@
 <html>
   <head>
+    <script src="song.js"></script>
+    <script src="opl2.js"></script>
     <title>Waves of Warez</title>
   </head>
   <body bgcolor="#000000">
@@ -148,6 +150,8 @@ function update_screen() {
   return screen;
 }
 
+adlibplayer_init = window.onload;
+
 window.onload = function() {
   var canvas = document.getElementById("c");
   var offscreen = document.createElement('canvas');
@@ -191,8 +195,9 @@ window.onload = function() {
     window.requestAnimationFrame(doframe);
   }
 
-  window.requestAnimationFrame(doframe);
+  adlibplayer_init();
 
+  window.requestAnimationFrame(doframe);
 }
 
   </script>
