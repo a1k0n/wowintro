@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <title>Waves of Warez</title>
+  </head>
+  blah
+  <canvas width=640 height=480 id="c"></canvas>
+  blarg
+  <script>
+
+function gen_palette() {
+  var pal = new Uint8Array(128*3);
+  var bl = 2;
+  var ah = 0;
+  for (var i = 3; i < 128*3; i += 3) {
+    pal[i] = 0x80 - (ah << 1);
+    pal[i+1] = 0x40 - ah;
+    pal[i+2] = 0xff - ah;
+    ah = (ah + bl) & 255;
+    if (ah < 0) ah += 255;
+    if (ah > 0x40) {
+      bl = -bl;
+      ah += 2*bl;
+    }
+  }
+  return pal;
+}
+
+window.onload = function() {
+  var canvas = document.getElementById("c");
+  var ctx = canvas.getContext('2d');
+  var pal = gen_palette();
+  console.log(pal);
+}
+
+  </script>
+</html>
